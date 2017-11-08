@@ -43,14 +43,35 @@ function main() {
     
     stage.addChild(background);
 
-    var leftEyeGrid = drawEye(NORMAL_EYE, true)
-    var rightEyeGrid = drawEye(NORMAL_EYE, false)
+    var leftEyeGrid = drawEye(SMILE_EYE1, true)
+    var rightEyeGrid = drawEye(SMILE_EYE1, false)
     var mouthGrid = drawMouth(NORMAL_MOUTH);
 
-   // var mouthAnimationFrames = [SMILE1_MOUTH, SMILE2_MOUTH, SMILE3_MOUTH, SMILE4_MOUTH, SMILE5_MOUTH];
+    var eyeAnimationFrames = [NORMAL_EYE, SMILE_EYE0,
+                              SMILE_EYE1, SMILE_EYE2,
+                              SMILE_EYE3, SMILE_EYE4,
+                              SMILE_EYE4, SMILE_EYE4,
+                              NORMAL_EYE, SMILE_EYE4,
+                              NORMAL_EYE, SMILE_EYE4,
+                              SMILE_EYE4, SMILE_EYE4,
+                              SMILE_EYE4, SMILE_EYE3,
+                              SMILE_EYE2, SMILE_EYE1,
+                              SMILE_EYE0];
 
-    //animate(mouthGrid, mouthAnimationFrames);
-    
+    var mouthAnimationFrames = [NORMAL_MOUTH, SMILE_MOUTH0,
+                                SMILE_MOUTH1, SMILE_MOUTH2,
+                                SMILE_MOUTH3, SMILE_MOUTH4,
+                                SMILE_MOUTH4, SMILE_MOUTH4,
+                                SMILE_MOUTH4, SMILE_MOUTH4,
+                                SMILE_MOUTH4, SMILE_MOUTH4,
+                                SMILE_MOUTH4, SMILE_MOUTH4,
+                                SMILE_MOUTH4, SMILE_MOUTH3,
+                                SMILE_MOUTH2, SMILE_MOUTH1,
+                                SMILE_MOUTH0];
+
+    animate(leftEyeGrid, eyeAnimationFrames);
+    animate(rightEyeGrid, eyeAnimationFrames);
+    animate(mouthGrid, mouthAnimationFrames);
     renderer.render(stage);
 }
 
@@ -81,7 +102,7 @@ function animate(target, frames) {
             if (frames[currentFrame][i] > 1) {
                 currentGraphics.alpha = 1;
             } else {
-                currentGraphics.alpha = 0.3;
+                currentGraphics.alpha = 0.1;
             }
         }
 
@@ -110,7 +131,7 @@ function drawEye(data, left = true) {
         var y = (i / EYE_ROWS) * 9.5 + EYE_OFFSET_Y;
         var graphics = getGraphicsUnit(left ? 1013 - x : x, y);
 
-        graphics.alpha = data[i] > 1 ? 1 : 0.3;
+        graphics.alpha = data[i] > 1 ? 1 : 0.1;
 
         stage.addChild(graphics);
         list.push(graphics);
@@ -135,7 +156,7 @@ function drawMouth(data) {
         var y = Math.floor(i / MOUTH_ROWS) * 9 + MOUTH_OFFSET_Y;
 
         var graphics = getGraphicsUnit(x, y);
-        graphics.alpha = data[i] > 1 ? 1 : 0.3;
+        graphics.alpha = data[i] > 1 ? 1 : 0.1;
 
         stage.addChild(graphics);
         list.push(graphics);
