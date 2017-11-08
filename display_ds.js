@@ -47,7 +47,6 @@ function main() {
     var rightEyeGrid = drawEye(SMILE_EYE1, false)
     var mouthGrid = drawMouth(NORMAL_MOUTH);
 
-<<<<<<< Updated upstream
     var smileEyeAnimationFrames = [
         NORMAL_EYE, SMILE_EYE0,
         SMILE_EYE1, SMILE_EYE2,
@@ -100,41 +99,38 @@ function main() {
         SAD_MOUTH3, SAD_MOUTH3,
         SAD_MOUTH2, SAD_MOUTH1,
         SAD_MOUTH0
-    ]
+    ];
 
-    animate(leftEyeGrid, sadEyeAnimationFrames);
-    animate(rightEyeGrid, sadEyeAnimationFrames);
-    animate(mouthGrid, sadMouthAnimationFrames);
-=======
-    var eyeAnimationFrames = [NORMAL_EYE, SURPRISE_EYE0,
-                              SURPRISE_EYE1, SURPRISE_EYE2,
-                              SURPRISE_EYE3, SURPRISE_EYE4,
-                              SURPRISE_EYE4, SURPRISE_EYE4,
-                              SURPRISE_EYE4, NORMAL_EYE,
-                              SURPRISE_EYE4, NORMAL_EYE,
-                              SURPRISE_EYE4,
-                              SURPRISE_EYE3, SURPRISE_EYE2,
-                              SURPRISE_EYE1, SURPRISE_EYE0,
-                             
-                             ];
+    var surpriseEyeAnimationFrames = [
+        NORMAL_EYE, SURPRISE_EYE0,
+        SURPRISE_EYE1, SURPRISE_EYE2,
+        SURPRISE_EYE3, SURPRISE_EYE4,
+        SURPRISE_EYE4, SURPRISE_EYE4,
+        SURPRISE_EYE4, NORMAL_EYE,
+        SURPRISE_EYE4, NORMAL_EYE,
+        SURPRISE_EYE4, SURPRISE_EYE3,
+        SURPRISE_EYE2, SURPRISE_EYE1,
+        SURPRISE_EYE0,
+   ];
 
-    var mouthAnimationFrames = [NORMAL_MOUTH, SURPRISE_MOUTH0,
-                                SURPRISE_MOUTH1, SURPRISE_MOUTH2,
-                                SURPRISE_MOUTH3, SURPRISE_MOUTH4,
-                                SURPRISE_MOUTH4, SURPRISE_MOUTH4,
-                                SURPRISE_MOUTH4, NORMAL_MOUTH,
-                                SURPRISE_MOUTH4, NORMAL_MOUTH,
-                                
-                                SURPRISE_MOUTH4, SURPRISE_MOUTH3,
-                                SURPRISE_MOUTH2, SURPRISE_MOUTH1,
-                                SURPRISE_MOUTH0];
+    var surpriseMouthAnimationFrames = [
+        NORMAL_MOUTH, SURPRISE_MOUTH0,
+        SURPRISE_MOUTH1, SURPRISE_MOUTH2,
+        SURPRISE_MOUTH3, SURPRISE_MOUTH4,
+        SURPRISE_MOUTH4, SURPRISE_MOUTH4,
+        SURPRISE_MOUTH4, NORMAL_MOUTH,
+        SURPRISE_MOUTH4, NORMAL_MOUTH,
+        SURPRISE_MOUTH4, SURPRISE_MOUTH3,
+        SURPRISE_MOUTH2, SURPRISE_MOUTH1,
+        SURPRISE_MOUTH0
+    ];
     
-    
+    var eyeAnimationFrames = smileEyeAnimationFrames;
+    var mouthAnimationFrames = smileMouthAnimationFrames;
 
     animate(leftEyeGrid, eyeAnimationFrames);
     animate(rightEyeGrid, eyeAnimationFrames);
     animate(mouthGrid, mouthAnimationFrames);
->>>>>>> Stashed changes
     renderer.render(stage);
 }
 
