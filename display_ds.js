@@ -3,15 +3,15 @@ var stage = null;
 var renderer = null
 
 // 각종 그래픽 좌표
-var EYE_ROWS = 34;
-var EYE_COLS = 19;
+var EYE_ROWS = 11;
+var EYE_COLS = 7;
 var EYE_OFFSET_X = 158;
-var EYE_OFFSET_Y = 191;
+var EYE_OFFSET_Y = 189;
 
-var MOUTH_ROWS = 142;
-var MOUTH_COLS = 21;
-var MOUTH_OFFSET_X = 300;
-var MOUTH_OFFSET_Y = 462;
+var MOUTH_ROWS = 47;
+var MOUTH_COLS = 7;
+var MOUTH_OFFSET_X = 305;
+var MOUTH_OFFSET_Y = 470;
 
 var EMOTIONS = ['Angry', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
 
@@ -43,13 +43,13 @@ function main() {
     
     stage.addChild(background);
 
-    var leftEyeGrid = drawEye(SMILE1_EYE, true)
-    var rightEyeGrid = drawEye(SMILE1_EYE, false)
-    var mouthGrid = drawMouth(SMILE1_MOUTH);
+    var leftEyeGrid = drawEye(NORMAL_EYE, true)
+    var rightEyeGrid = drawEye(NORMAL_EYE, false)
+    var mouthGrid = drawMouth(NORMAL_MOUTH);
 
-    var mouthAnimationFrames = [SMILE1_MOUTH, SMILE2_MOUTH, SMILE3_MOUTH, SMILE4_MOUTH, SMILE5_MOUTH];
+   // var mouthAnimationFrames = [SMILE1_MOUTH, SMILE2_MOUTH, SMILE3_MOUTH, SMILE4_MOUTH, SMILE5_MOUTH];
 
-    animate(mouthGrid, mouthAnimationFrames);
+    //animate(mouthGrid, mouthAnimationFrames);
     
     renderer.render(stage);
 }
@@ -106,9 +106,9 @@ function drawEye(data, left = true) {
             continue;
         }
 
-        var x = (i % EYE_ROWS) * 3.1 + EYE_OFFSET_X;
-        var y = (i / EYE_ROWS) * 3.1 + EYE_OFFSET_Y;
-        var graphics = getGraphicsUnit(left ? 1010 - x : x, y);
+        var x = (i % EYE_ROWS) * 9.5 + EYE_OFFSET_X;
+        var y = (i / EYE_ROWS) * 9.5 + EYE_OFFSET_Y;
+        var graphics = getGraphicsUnit(left ? 1013 - x : x, y);
 
         graphics.alpha = data[i] > 1 ? 1 : 0.3;
 
@@ -131,8 +131,8 @@ function drawMouth(data) {
             continue;
         }
 
-        var x = (i % MOUTH_ROWS) * 3 + MOUTH_OFFSET_X;
-        var y = Math.floor(i / MOUTH_ROWS) * 2 + MOUTH_OFFSET_Y;
+        var x = (i % MOUTH_ROWS) * 9+ MOUTH_OFFSET_X;
+        var y = Math.floor(i / MOUTH_ROWS) * 9 + MOUTH_OFFSET_Y;
 
         var graphics = getGraphicsUnit(x, y);
         graphics.alpha = data[i] > 1 ? 1 : 0.3;
