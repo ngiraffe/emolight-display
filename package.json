@@ -1,0 +1,22 @@
+{
+  "name": "emolight-display",
+  "version": "1.0.0",
+  "description": "hello world\r gilhyun edit\\\\q",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngiraffe/emolight-display.git"
+  },
+  "author": "gilyun nam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ngiraffe/emolight-display/issues"
+  },
+  "homepage": "https://github.com/ngiraffe/emolight-display#readme",
+  "dependencies": {
+    "pixi.js": "^4.6.0"
+  }
+}
