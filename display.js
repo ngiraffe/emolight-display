@@ -43,14 +43,19 @@ function main() {
     
     stage.addChild(background);
 
-    var leftEyeGrid = drawEye(SMILE1_EYE, true)
-    var rightEyeGrid = drawEye(SMILE1_EYE, false)
-    var mouthGrid = drawMouth(SMILE1_MOUTH);
+    var leftEyeGrid = drawEye(ANGRY_EYE1, true)
+    var rightEyeGrid = drawEye(ANGRY_EYE1, false)
+    var mouthGrid = drawMouth(ANGRY_MOUTH1);
 
-    var mouthAnimationFrames = [SMILE1_MOUTH, SMILE2_MOUTH, SMILE3_MOUTH, SMILE4_MOUTH, SMILE5_MOUTH];
+    var eyeAnimationFrames = [ANGRY_EYE1,ANGRY_EYE2,ANGRY_EYE3,ANGRY_EYE4,ANGRY_EYE5
+        ,ANGRY_EYE6,ANGRY_EYE7,ANGRY_EYE8,ANGRY_EYE9,ANGRY_EYE10,ANGRY_EYE11,ANGRY_EYE12];
+
+    var mouthAnimationFrames = [ANGRY_MOUTH1,ANGRY_MOUTH2,ANGRY_MOUTH3,ANGRY_MOUTH4,ANGRY_MOUTH5
+        ,ANGRY_MOUTH6,ANGRY_MOUTH7,ANGRY_MOUTH8,ANGRY_MOUTH9,ANGRY_MOUTH10,ANGRY_MOUTH11,ANGRY_MOUTH12];
 
     animate(mouthGrid, mouthAnimationFrames);
-    
+    animate(rightEyeGrid, eyeAnimationFrames);
+    animate(leftEyeGrid, eyeAnimationFrames);
     renderer.render(stage);
 }
 
@@ -132,7 +137,7 @@ function drawMouth(data) {
         }
 
         var x = (i % MOUTH_ROWS) * 3 + MOUTH_OFFSET_X;
-        var y = Math.floor(i / MOUTH_ROWS) * 2 + MOUTH_OFFSET_Y;
+        var y = Math.floor(i / MOUTH_ROWS) * 4 + MOUTH_OFFSET_Y;
 
         var graphics = getGraphicsUnit(x, y);
         graphics.alpha = data[i] > 1 ? 1 : 0.3;
