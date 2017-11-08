@@ -47,31 +47,63 @@ function main() {
     var rightEyeGrid = drawEye(SMILE_EYE1, false)
     var mouthGrid = drawMouth(NORMAL_MOUTH);
 
-    var eyeAnimationFrames = [NORMAL_EYE, SMILE_EYE0,
-                              SMILE_EYE1, SMILE_EYE2,
-                              SMILE_EYE3, SMILE_EYE4,
-                              SMILE_EYE4, SMILE_EYE4,
-                              NORMAL_EYE, SMILE_EYE4,
-                              NORMAL_EYE, SMILE_EYE4,
-                              SMILE_EYE4, SMILE_EYE4,
-                              SMILE_EYE4, SMILE_EYE3,
-                              SMILE_EYE2, SMILE_EYE1,
-                              SMILE_EYE0];
+    var smileEyeAnimationFrames = [
+        NORMAL_EYE, SMILE_EYE0,
+        SMILE_EYE1, SMILE_EYE2,
+        SMILE_EYE3, SMILE_EYE4,
+        SMILE_EYE4, SMILE_EYE4,
+        NORMAL_EYE, SMILE_EYE4,
+        NORMAL_EYE, SMILE_EYE4,
+        SMILE_EYE4, SMILE_EYE4,
+        SMILE_EYE4, SMILE_EYE3,
+        SMILE_EYE2, SMILE_EYE1,
+        SMILE_EYE0
+    ];
 
-    var mouthAnimationFrames = [NORMAL_MOUTH, SMILE_MOUTH0,
-                                SMILE_MOUTH1, SMILE_MOUTH2,
-                                SMILE_MOUTH3, SMILE_MOUTH4,
-                                SMILE_MOUTH4, SMILE_MOUTH4,
-                                SMILE_MOUTH4, SMILE_MOUTH4,
-                                SMILE_MOUTH4, SMILE_MOUTH4,
-                                SMILE_MOUTH4, SMILE_MOUTH4,
-                                SMILE_MOUTH4, SMILE_MOUTH3,
-                                SMILE_MOUTH2, SMILE_MOUTH1,
-                                SMILE_MOUTH0];
+    var smileMouthAnimationFrames = [
+        NORMAL_MOUTH, SMILE_MOUTH0,
+        SMILE_MOUTH1, SMILE_MOUTH2,
+        SMILE_MOUTH3, SMILE_MOUTH4,
+        SMILE_MOUTH4, SMILE_MOUTH4,
+        SMILE_MOUTH4, SMILE_MOUTH4,
+        SMILE_MOUTH4, SMILE_MOUTH4,
+        SMILE_MOUTH4, SMILE_MOUTH4,
+        SMILE_MOUTH4, SMILE_MOUTH3,
+        SMILE_MOUTH2, SMILE_MOUTH1,
+        SMILE_MOUTH0
+    ];
 
-    animate(leftEyeGrid, eyeAnimationFrames);
-    animate(rightEyeGrid, eyeAnimationFrames);
-    animate(mouthGrid, mouthAnimationFrames);
+    var sadEyeAnimationFrames = [
+        NORMAL_EYE, SAD_EYE0,
+        SAD_EYE1, SAD_EYE2,
+        SAD_EYE3, SAD_EYE4,
+        SAD_EYE4, SAD_EYE4,
+        SAD_EYE5, SAD_EYE6,
+        SAD_EYE7, SAD_EYE4,
+        SAD_EYE4, SAD_EYE5,
+        SAD_EYE6, SAD_EYE7, 
+        SAD_EYE4, SAD_EYE3,
+        SAD_EYE3, SAD_EYE1,
+        SAD_EYE0
+    ];
+
+    var sadMouthAnimationFrames = [
+        NORMAL_MOUTH, SAD_MOUTH0,
+        SAD_MOUTH1, SAD_MOUTH2,
+        SAD_MOUTH3, SAD_MOUTH3,
+        SAD_MOUTH2, SAD_MOUTH3,
+        SAD_MOUTH3, SAD_MOUTH3,
+        SAD_MOUTH2, SAD_MOUTH3,
+        SAD_MOUTH3, SAD_MOUTH3,
+        SAD_MOUTH2, SAD_MOUTH3,
+        SAD_MOUTH3, SAD_MOUTH3,
+        SAD_MOUTH2, SAD_MOUTH1,
+        SAD_MOUTH0
+    ]
+
+    animate(leftEyeGrid, sadEyeAnimationFrames);
+    animate(rightEyeGrid, sadEyeAnimationFrames);
+    animate(mouthGrid, sadMouthAnimationFrames);
     renderer.render(stage);
 }
 
