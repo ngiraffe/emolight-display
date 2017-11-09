@@ -16,10 +16,7 @@ var MOUTH_OFFSET_Y = 470;
 var EMOTIONS = ['Angry', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
 
 var socket = io('http://localhost:8007');
-socket.on('emotion', function (data) {
-    var chunks = data.split(",");
-    console.log(EMOTIONS[Number(chunks[0])], ":", chunks[1]);
-});
+
 
 function init() {
 
@@ -43,9 +40,12 @@ function main() {
     
     stage.addChild(background);
 
-    var leftEyeGrid = drawEye(SMILE_EYE1, true)
-    var rightEyeGrid = drawEye(SMILE_EYE1, false)
+    var leftEyeGrid = drawEye(NORMAL_EYE, true)
+    var rightEyeGrid = drawEye(NORMAL_EYE, false)
     var mouthGrid = drawMouth(NORMAL_MOUTH);
+
+    var normalEyeAnimationFrames = [NORMAL_EYE];
+    var normalMouthAnimationFrames = [NORMAL_MOUTH];
 
     var smileEyeAnimationFrames = [
         NORMAL_EYE, SMILE_EYE0,
@@ -124,13 +124,54 @@ function main() {
         SURPRISE_MOUTH2, SURPRISE_MOUTH1,
         SURPRISE_MOUTH0
     ];
-    
-    var eyeAnimationFrames = smileEyeAnimationFrames;
-    var mouthAnimationFrames = smileMouthAnimationFrames;
 
-    animate(leftEyeGrid, eyeAnimationFrames);
-    animate(rightEyeGrid, eyeAnimationFrames);
-    animate(mouthGrid, mouthAnimationFrames);
+    var intv1;
+    var intv2;
+    var intv3;
+    var prevEmotion = "Neutral";
+
+    socket.on('emotion', (data) => {
+        var chunks = data.split(",");
+        var emotion = EMOTIONS[Number(chunks[0])];
+        var prob = Number(chunks[1]);
+        console.log(emotion, ":", prob);
+
+        if (prob > 0.7 && prevEmotion != emotion) {
+            var eyeAnimationFrames = normalEyeAnimationFrames;
+            var mouthAnimationFrames = normalMouthAnimationFrames;
+            prevEmotion = emotion;
+            switch (emotion) {
+                case "Fear":
+                case "Sad":
+                    eyeAnimationFrames = sadEyeAnimationFrames;
+                    mouthAnimationFrames = sadMouthAnimationFrames;
+                    break;
+                case "Happy":
+                    eyeAnimationFrames = smileEyeAnimationFrames;
+                    mouthAnimationFrames = smileMouthAnimationFrames;
+                    break;
+                case "Angry":
+                case "Surprise":
+                    eyeAnimationFrames = surpriseEyeAnimationFrames;
+                    mouthAnimationFrames = surpriseMouthAnimationFrames;
+                    break;
+                case "Neutral":
+                default:
+                    break;
+            }
+
+            if (intv1 != null) {
+                clearInterval(intv1);
+                clearInterval(intv2);
+                clearInterval(intv3);
+            }
+
+            intv1 = animate(leftEyeGrid, eyeAnimationFrames);
+            intv2 = animate(rightEyeGrid, eyeAnimationFrames);
+            intv3 = animate(mouthGrid, mouthAnimationFrames);
+        }
+    });
+    
     renderer.render(stage);
 }
 
@@ -147,7 +188,7 @@ function animate(target, frames) {
 
     var currentFrame = 0;
 
-    setInterval(()=> {
+    return setInterval(()=> {
 
         var j = 0;
         for (var i = 0; i < frames[currentFrame].length; i++) {
