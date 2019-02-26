@@ -1,3 +1,3 @@
 # emolight-display
-hello world
-gilhyun edit\\q
+
+gilhyun edit
